@@ -25,6 +25,9 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'user' => [
+            'identityClass' => 'app\models\ClienteController',
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -49,16 +52,7 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'ClientController',
-                ],
-                '<action:\w+>' => 'site/<action>',
-                '<controller:\w+>/<id:\d+>' => '<controller>/view',
-                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-            ],
+            'rules' => require(__DIR__ . '/routes.php'),
         ],
         
     ],
