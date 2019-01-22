@@ -73,7 +73,7 @@ class ClienteController extends ActiveController
      {
         $client = Cliente::find()->where(['ID' => $id ])->one();
 
-        if(count($client) > 0)
+        if(!empty($client))
         {
             $client->attributes = \yii::$app->request->post();
             
@@ -96,7 +96,7 @@ class ClienteController extends ActiveController
      {
         $client = Cliente::find()->where(['ID' => $id ])->one();
 
-        if(count($client) > 0)
+        if(!empty($client))
         {
             $client->attributes = \yii::$app->request->post();
             if($client->save())
