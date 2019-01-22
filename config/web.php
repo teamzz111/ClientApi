@@ -26,7 +26,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\ClienteController',
+            'identityClass' => 'app\models\ClientController',
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

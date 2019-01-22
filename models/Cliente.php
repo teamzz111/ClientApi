@@ -22,17 +22,7 @@ class Cliente extends \yii\db\ActiveRecord
     {
         return 'cliente';
     }
-    public function actionInfo()
-    {
-        return \Yii::createObject([
-            'class' => 'yii\web\Response',
-            'format' => \yii\web\Response::FORMAT_JSON,
-            'data' => [
-                'message' => 'hello world',
-                'code' => 100,
-            ],
-        ]);
-    }
+
     public function rules()
     {
         return [
