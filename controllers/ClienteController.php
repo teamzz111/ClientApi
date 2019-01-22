@@ -71,21 +71,24 @@ class ClienteController extends ActiveController
 
      public function actionDelete($id)
      {
-        try  
+        $client = Cliente::find()->where(['ID' => $id ])->one();
+
+        if(count($client) > 0)
         {
-            $cliente = Cliente::findOne($id);    
-        } 
-        catch (Exception $e) 
-        {
-            return ['status' => 0, 'message' => 'Hubo un problema borrando el registro', 'object' => $e->getMessage()];
+            $client->attributes = \yii::$app->request->post();
+            
+            if($client->delete())
+            {
+                return array('status' => 1, 'message'=> 'Borrado exitoso', "object" => "Estado: 200, éxito.");
+            } 
+            else 
+            {
+                return ['status' => 0, 'message' => ['Hubo un problema borrando el usuario'], 'object' => $client->errors];
+            }
         }
-        if($cliente->delete())
+        else
         {
-            return ['status' => 1, 'message' => 'Registro eliminado', 'object' => 'Estado: 200, éxito.'];
-        }        
-        else 
-        {
-            return ['status' => 0, 'message' => 'Hubo un problema borrando el registro', 'object' => $cliente->errors];
+            return ['status' => 0, 'message' => 'El usuario no existe', 'object' => '404 id no encontrado'];
         }
      }   
 
@@ -96,7 +99,8 @@ class ClienteController extends ActiveController
         if(count($client) > 0)
         {
             $client->attributes = \yii::$app->request->post();
-            if($client->save()){
+            if($client->save())
+            {
                 return array('status' => 1, 'message'=> 'Actualización exitosa', "object" => "Estado: 200, éxito.");
             } 
             else 
