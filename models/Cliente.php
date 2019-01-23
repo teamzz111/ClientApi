@@ -29,7 +29,7 @@ class Cliente extends \yii\db\ActiveRecord
             [['cedula', 'correo', 'nombres', 'apellidos', 'tipo_usuario', 'telefono', 'nit'],
                 'required', 'message' => 'El campo está {attribute} incompleto', ],
             [['tipo_usuario'], 'integer', 'message' => '{attribute} Acepta únicamente números.'],
-            [['cedula', 'telefono'], 'string', 'max' => 11, 'message' => '{attribute} no debe sobrepasar los 11 carácteres.'],
+            [['cedula', 'telefono'], 'string', 'max' => 11, 'message' => '{attribute} no debe sobrepasar los 11 carácteres...'],
             [['correo'], 'string', 'max' => 50, 'message' => '{attribute} no debe sobrepasar los 50 carácteres.'],
             [['nit'], 'string', 'max' => 16, 'message' => '{attribute} no debe sobrepasar los 16 carácteres.'],
             [['nombres', 'apellidos'], 'string', 'max' => 64, 'message' => '{attribute} no debe sobrepasar los 64 carácteres.'],
