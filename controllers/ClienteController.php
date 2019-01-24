@@ -122,7 +122,7 @@ class ClienteController extends ActiveController
             } 
             else 
             {
-                return ['status' => 0, 'message' => ['Hubo un problema actualizando el registro'], 'object' => $client->errors];
+                return ['status' => 0, 'message' => ['Ups... No es necesario actualizar este dato'], 'object' => $client->errors];
             }
         }
         else
