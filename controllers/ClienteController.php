@@ -41,7 +41,26 @@ class ClienteController extends ActiveController
         unset($actions['create']);
         unset($actions['delete']);
         unset($actions['update']);
+        unset($actions['delete']);
+        unset($actions['index']);
         return $actions;
+    }
+
+    public function actionIndex()
+    {        
+        return Cliente::find()->all();
+    }
+
+    public function actionView($id)
+    {
+
+        $modelCliente = Cliente::find()->where(['ID' => $id])->one();
+        if(empty($modelCliente))
+        {
+            return ['status' => 0, 'message' => 'Usuario no registrado', 'object' => '404 Not found'];
+        }
+        return $modelCliente;
+
     }
 
     public function actionCreate()
