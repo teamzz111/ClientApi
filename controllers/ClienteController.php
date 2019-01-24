@@ -53,14 +53,12 @@ class ClienteController extends ActiveController
 
     public function actionView($id)
     {
-
         $modelCliente = Cliente::find()->where(['ID' => $id])->one();
         if(empty($modelCliente))
         {
             return ['status' => 0, 'message' => 'Usuario no registrado', 'object' => '404 Not found'];
         }
         return $modelCliente;
-
     }
 
     public function actionCreate()
