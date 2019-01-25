@@ -42,6 +42,7 @@ class ClienteController extends ActiveController
         unset($actions['delete']);
         unset($actions['update']);
         unset($actions['delete']);
+        unset($actions['view']);
         unset($actions['index']);
         return $actions;
     }
